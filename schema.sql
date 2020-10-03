@@ -1,13 +1,7 @@
 ﻿-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
 -- Link to schema: https://app.quickdatabasediagrams.com/#/d/6MQx2P
 -- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
-
-drop table if exists employees;
-drop table if exists departemnts;
-drop table if exists dept_employees;
-drop table if exists dept_manager;
-drop table if exists salaries;
-drop table if exists titles;
+drop table if exists employees, departemnts, dept_employees, dept_manager, salaries, titles cascade;
 
 
 CREATE TABLE "employees" (
@@ -16,6 +10,7 @@ CREATE TABLE "employees" (
     "birth_date" varchar(15)   NOT NULL,
     "first_name" varchar(30)   NOT NULL,
     "last_name" varchar(30)   NOT NULL,
+    "sex" varchar(2)   NOT NULL,
     "hire_date" varchar(10)   NOT NULL,
     CONSTRAINT "pk_employees" PRIMARY KEY (
         "emp_no"
@@ -45,11 +40,11 @@ CREATE TABLE "dept_manager" (
 
 CREATE TABLE "salaries" (
     "emp_no" int   NOT NULL,
-    "salary" float   NOT NULL
+    "salary" int   NOT NULL
 );
 
 CREATE TABLE "titles" (
-    "emp_no" int   NOT NULL,
+    "title_id" varchar(10)   NOT NULL,
     "title" varchar(30)   NOT NULL
 );
 
@@ -68,6 +63,6 @@ REFERENCES "employees" ("emp_no");
 ALTER TABLE "salaries" ADD CONSTRAINT "fk_salaries_emp_no" FOREIGN KEY("emp_no")
 REFERENCES "employees" ("emp_no");
 
-ALTER TABLE "titles" ADD CONSTRAINT "fk_titles_emp_no" FOREIGN KEY("emp_no")
-REFERENCES "employees" ("emp_no");
+ALTER TABLE "titles" ADD CONSTRAINT "fk_titles_title_id" FOREIGN KEY("title_id")
+REFERENCES "employees" ("emp_title_id");
 
