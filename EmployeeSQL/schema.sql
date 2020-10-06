@@ -40,4 +40,3 @@ CREATE TABLE "salaries" (
     "salary" int   NOT NULL,
     foreign key (emp_no) references employees(emp_no)
 );
-
