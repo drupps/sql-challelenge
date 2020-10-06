@@ -1,5 +1,5 @@
-﻿drop table if exists employees, departments, dept_employees, dept_manager, salaries, titles CASCADE;
--- titles done
+﻿--DROP TABLE IF EXISTS employees, departments, dept_employees, dept_manager, salaries, titles CASCADE;
+
 CREATE TABLE "titles" (
     "title_id" varchar(10) primary key NOT NULL,
     "title" varchar(30)   NOT NULL
